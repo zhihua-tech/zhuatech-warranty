@@ -88,6 +88,10 @@ docker compose config
 
 配套文档：[API](docs/API.md) · [架构](docs/ARCHITECTURE.md) · [测试](docs/TESTING.md) · [安全政策](SECURITY.md) · [贡献指南](CONTRIBUTING.md)
 
+## 质保索赔决策
+
+新增维修、换货或赔付前的企业级决策门禁，统一核对质保权益、除外责任、反欺诈、购买凭证、序列号、诊断、估价、库存、客户确认与职责分离。详见[企业质保索赔决策说明](docs/ENTERPRISE_CLAIM_DECISION.md)。
+
 ## 使用与商业授权
 
 本工程仅允许个人非商业性的学习、研究和技术交流，**不得商用**。商用、SaaS、企业部署、二次销售、软件实施和深度定制须事先取得上海如静知华信息科技有限公司书面授权。
