@@ -13,10 +13,16 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @SpringBootTest @AutoConfigureMockMvc
 class WarrantyApiIntegrationTests {
  @Autowired MockMvc mvc;
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void publicMetadataSecurityCatalogAndDashboardAreAvailable() throws Exception {
   mvc.perform(get("/api/public/about")).andExpect(status().isOk()).andExpect(jsonPath("$.data.company").value("上海如静知华信息科技有限公司")).andExpect(jsonPath("$.data.website").value("https://www.zhuatech.cn/"));
   mvc.perform(get("/actuator/health")).andExpect(status().isOk()).andExpect(jsonPath("$.status").value("UP"));
@@ -25,6 +31,9 @@ class WarrantyApiIntegrationTests {
   mvc.perform(get("/api/dashboard").with(httpBasic("operator","operator123"))).andExpect(status().isOk()).andExpect(jsonPath("$.data.totalRecords").isNumber());
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void recordFollowsConfiguredWorkflowAndWritesAudit() throws Exception {
   long id=create("UT-WAR-001","企业流程自动化验收");
   mvc.perform(post("/api/records/{id}/actions",id).with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content("{\"action\":\"AUTHORIZE\",\"remark\":\"越级操作\"}")).andExpect(status().isConflict());
@@ -33,6 +42,9 @@ class WarrantyApiIntegrationTests {
   mvc.perform(get("/api/admin/audit-logs").with(httpBasic("admin","admin123"))).andExpect(status().isOk()).andExpect(jsonPath("$.data.length()").isNotEmpty());
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void draftRecordSupportsUpdateDeleteAndModuleValidation() throws Exception {
   String body=body("UT-WAR-002","待修改记录");
   long id=idOf(mvc.perform(post("/api/records").with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isOk()).andReturn());
@@ -41,6 +53,9 @@ class WarrantyApiIntegrationTests {
   mvc.perform(post("/api/records").with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content(body.replace("UT-WAR-002","UT-WAR-BAD").replace("PRODUCT","UNKNOWN"))).andExpect(status().isBadRequest());
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void searchSlaTimelineCommentsAndCsvExportAreUsable() throws Exception {
   long id=create("UT-WAR-OPS","运营检索与协作记录");
   mvc.perform(get("/api/records/search").param("module","PRODUCT").param("keyword","运营检索").param("page","0").param("size","10").with(httpBasic("operator","operator123")))
@@ -52,6 +67,9 @@ class WarrantyApiIntegrationTests {
   mvc.perform(get("/api/records/export.csv").param("keyword","运营检索").with(httpBasic("operator","operator123"))).andExpect(status().isOk()).andExpect(header().string("Content-Disposition",containsString("records.csv"))).andExpect(content().string(containsString("UT-WAR-OPS")));
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void administratorWorkflowActionRejectsOperator() throws Exception {
   long id=create("UT-WAR-ROLE","管理员动作权限校验");
   mvc.perform(post("/api/records/{id}/actions",id).with(httpBasic("admin","admin123")).contentType(MediaType.APPLICATION_JSON).content("{\"action\":\"VALIDATE\",\"remark\":\"准备状态\"}")).andExpect(status().isOk());
@@ -59,13 +77,25 @@ class WarrantyApiIntegrationTests {
   mvc.perform(post("/api/records/{id}/actions",id).with(httpBasic("admin","admin123")).contentType(MediaType.APPLICATION_JSON).content("{\"action\":\"AUTHORIZE\",\"remark\":\"授权操作\"}")).andExpect(status().isOk());
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void onlyAdminCanMaintainPersistentSettings() throws Exception {
   mvc.perform(get("/api/admin/settings").with(httpBasic("operator","operator123"))).andExpect(status().isForbidden());
   mvc.perform(put("/api/admin/settings").with(httpBasic("admin","admin123")).contentType(MediaType.APPLICATION_JSON).content("{\"acceptanceMode\":\"企业级自动化测试\"}")).andExpect(status().isOk()).andExpect(jsonPath("$.data.acceptanceMode").value("企业级自动化测试"));
  }
 
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private long create(String no,String title)throws Exception{return idOf(mvc.perform(post("/api/records").with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content(body(no,title))).andExpect(status().isOk()).andReturn());}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private String body(String no,String title){return "{\"recordNo\":\""+no+"\",\"module\":\"PRODUCT\",\"title\":\""+title+"\",\"businessParty\":\"上海总部\",\"owner\":\"业务专员\",\"amount\":12800,\"quantity\":3,\"dueDate\":\"2026-09-30\",\"riskLevel\":\"正常\",\"description\":\"验证主要功能、状态控制和审计\"}";}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private long idOf(MvcResult result)throws Exception{var m=Pattern.compile("\\\"id\\\":(\\d+)").matcher(result.getResponse().getContentAsString());Assertions.assertTrue(m.find());return Long.parseLong(m.group(1));}
 }
 

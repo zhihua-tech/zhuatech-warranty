@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class WarrantyClaimDecisionService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result assess(Request request) {
         var blockers = new ArrayList<String>();
         var actions = new ArrayList<String>();
@@ -26,11 +32,20 @@ public class WarrantyClaimDecisionService {
         return new Result(decision, List.copyOf(blockers), List.copyOf(actions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { APPROVE, ASSESS, BLOCKED }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(String claimId, boolean proofOfPurchase, boolean serialVerified,
                           boolean coverageActive, boolean exclusionDetected, boolean diagnosticComplete,
                           boolean fraudCheckClear, boolean repairEstimateApproved,
                           boolean replacementStockAvailable, boolean customerConsent,
                           boolean decisionMakerSeparated, boolean auditReady) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(Decision decision, List<String> blockers, List<String> actions) {}
 }

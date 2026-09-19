@@ -9,8 +9,14 @@ import org.springframework.context.annotation.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Configuration
 public class DataInitializer {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Bean
     CommandLineRunner seed(BusinessRecordRepository records, SystemSettingRepository settings, DomainCatalog catalog) {
         return args -> {
