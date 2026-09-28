@@ -1,5 +1,7 @@
 # ZhuaTech Warranty｜知华科技售后与质保管理系统
 
+[简体中文](README.md) | [English](README.en.md)
+
 > 用统一权益与工单链路提升售后履约质量并控制质保成本
 
 [![Java 21](https://img.shields.io/badge/Java-21-2c6b77)](backend/pom.xml)
