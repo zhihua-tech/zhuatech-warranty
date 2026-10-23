@@ -1,0 +1,84 @@
+{
+  "slug": "warranty",
+  "title": "保修寿命折减与免赔额测算",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "purchase",
+      "label": "购置金额",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "usedMonths",
+      "label": "已用月数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "coverageMonths",
+      "label": "保障月数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1000000"
+    },
+    {
+      "key": "replacement",
+      "label": "重置成本",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "deductible",
+      "label": "免赔额",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "remainingMonths",
+      "label": "剩余保障月数"
+    },
+    {
+      "key": "depreciatedValue",
+      "label": "折减保障价值"
+    },
+    {
+      "key": "compensation",
+      "label": "候选补偿额"
+    }
+  ],
+  "description": "依据调用方保修月数和折减口径测算剩余保障价值，受重置成本和免赔额限制，不替代保修条款。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "purchase": "1200",
+        "usedMonths": "6",
+        "coverageMonths": "12",
+        "replacement": "800",
+        "deductible": "100"
+      }
+    ]
+  }
+}

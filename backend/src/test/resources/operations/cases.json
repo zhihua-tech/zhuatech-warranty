@@ -1,0 +1,48 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "remainingMonths": "#6",
+      "depreciatedValue": "#600",
+      "compensation": "#500"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "usedMonths": "12"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "compensation": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "replacement": "300"
+    },
+    "expected": {
+      "decision": "PASS",
+      "compensation": "#200"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "deductible": "700"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "coverageMonths": "0"
+    },
+    "expected": {},
+    "error": true
+  }
+]
